@@ -1,6 +1,7 @@
-﻿using System;
+﻿using ppatierno.AzureSBLite;
+using ppatierno.AzureSBLite.Messaging;
+using System;
 using System.Threading;
-using Microsoft.ServiceBus.Messaging;
 
 namespace monotest
 {
@@ -19,14 +20,16 @@ namespace monotest
 
 		static void SendingRandomMessages()
 		{
-			var eventHubClient = EventHubClient.CreateFromConnectionString(connectionString, eventHubName);
+			MessagingFactory factory = MessagingFactory.CreateFromConnectionString(connectionString); 
+			EventHubClient client = factory.CreateEventHubClient(eventHubName); 
+
 			while (true)
 			{
 				try
 				{
 					var message = Guid.NewGuid().ToString();
 					Console.WriteLine("{0} > Sending message: {1}", DateTime.Now, message);
-					eventHubClient.Send(new EventData(System.Text.Encoding.UTF8.GetBytes(message)));
+					client.Send(new EventData(System.Text.Encoding.UTF8.GetBytes(message)));
 				}
 				catch (Exception exception)
 				{

@@ -40,6 +40,12 @@
     <Reference Include="System.ServiceModel" />
     <Reference Include="System.Xml" />
     <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="Amqp.Net">
+      <HintPath>..\packages\AzureSBLite.1.1.0.0\lib\net45\Amqp.Net.dll</HintPath>
+    </Reference>
+    <Reference Include="AzureSBLite.Net">
+      <HintPath>..\packages\AzureSBLite.1.1.0.0\lib\net45\AzureSBLite.Net.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Program.cs" />
